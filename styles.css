@@ -5,9 +5,127 @@
     font-family: sans-serif;
 }
 
+body {
+    /* background: url('./images/gaming-background.jpg')center center/cover; */
+
+}
+
+.gaming-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.gaming-header img {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
 .main-heading {
     text-align: center;
     letter-spacing: 1.3px;
     font-size: 3rem;
-    margin: 30px 0;
+    font-weight: lighter;
+    font-family: 'Aclonica', sans-serif;
+    color: rgb(69, 69, 188);
+}
+
+/* Search Section Styles */
+.search-section {
+    text-align: center;
+    position: relative;
+}
+
+.search-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: right -10%;
+}
+
+.search-section form {
+    margin-top: 50px;
+}
+
+.input-box {
+    outline: none;
+    width: 25%;
+}
+
+.input-box, .submit {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(142, 187, 255);
+    color: rgb(89, 89, 255);
+    background: none;
+    cursor: pointer;
+}
+
+.input-box::placeholder {
+    color: rgb(89, 89, 255);
+}
+
+.submit {
+    transition: all 0.3s;
+    outline: none;
+}
+
+.submit:hover {
+    background: rgb(89, 89, 255);
+    color: #fff;
+    border: 2px solid rgb(89, 89, 255);
+}
+
+.search-cards {
+    display: flex;
+    justify-content: space-evenly;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
+    flex-wrap: wrap;
+    margin-bottom: 160px;
+    gap: 60px;
+}
+
+.search-info {
+    height: 525px;
+    width: 400px;
+    margin-top: 80px;
+    cursor: pointer;
+    transition: all 0.5s;
+    background: rgba(0,75,200,0.75);
+    color: #fff;
+    opacity: 0.95;
+    border-radius: 5px;
+    box-shadow: 6px 2px 11px 0px rgba(0,0,0,0.90);
+    overflow: hidden;
+}
+
+.search-info:hover {
+    transform: scale(1.25);
+}
+
+.search-date {
+    letter-spacing: 1.3;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.search-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* border-radius: 0 0 5px 5px; */
+}
+
+.search-name {
+    margin: 10px 0;
+    /* color: rgb(172, 172, 255); */
 }
