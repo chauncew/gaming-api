@@ -2,6 +2,12 @@ const highestRated = document.querySelector('.highest-rated');
 const input = document.querySelector('.input-box')
 const submit = document.querySelector('.submit')
 const searchCards = document.querySelector('.search-cards')
+const scroll = document.querySelector('.scroll')
+const cardsClicked = document.querySelector('.cards-clicked')
+const smallImages = document.querySelector('.small-images')
+const popupCards = document.querySelector('.popup-cards')
+// const thumbNails = document.querySelector('.popup-cards>.small-images')
+
 
 const url = "https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba"
 
@@ -11,11 +17,16 @@ submit.addEventListener('click', (e) => {
     const getAPI = async () => {
         let value = input.value;
         const url2 = `https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba&search=${value}`
+        if(value === "") {
+            alert("Please Enter A Game. The default games will now be loaded")
+        }
         try {
         const api = await fetch(url2)
         const data = await api.json()
+        // window.scrollTo({bottom: 0})
         // console.log(data)
         input.value = ""
+        // scroll.style.display = 'block'
             gameSearch(data)
         } catch(error) {
             console.log(`Failed to fetch data ${error}`)
@@ -26,18 +37,103 @@ submit.addEventListener('click', (e) => {
 
 const gameSearch = (data) => {
     data.results.forEach((search) => {
-        // const gameData = document.createElement('div')
         console.log(search)
-        // searchCards.prepend(gameData)
-        searchCards.innerHTML += `
+        const gameData = document.createElement('div')
+        searchCards.append(gameData)
+        gameData.innerHTML += `
         <div class="search-info">
             <h1 class="search-name">${search.name}</h1>
             <h3 class="search-date">Released: ${search.released}</h3>
+            <h3 class="rating">Rating: ${search.rating}</h3>
             <img class="search-image" src=${search.background_image}>
         </div>
         `
+        gameData.addEventListener('click', () => {
+            popupCards.classList.add('cards')
+            popupCards.innerHTML += `
+            <h1 class="search-name">${search.name}</h1>
+            <h3 class="rating">Rating: ${search.rating}</h3>
+            `
+
+            // console.log(gameData)
+            search.platforms.map((gameData) => {
+                console.log(gameData.platform.name)
+                popupCards.innerHTML += `
+                    <h3>${gameData.platform.name}</h3>
+                `  
+                if(gameData.platform.name === "PC") {
+                    console.log('Its a PC')
+                    cardsClicked.innerHTML += `
+                        <img src="./images/gamepad.svg">
+                    `
+                } 
+            })
+            popupCards.innerHTML += `
+            <h1 class="close-button">X</h1>
+            <img class="search-image" src=${search.background_image}>
+            `
+            search.short_screenshots.map((screenShots) => {
+                smallImages.classList.add('smallImagesActive')
+                // console.log(screenShots.image)
+                smallImages.innerHTML += `
+                    <div class="screen-shots">
+                        <img src=${screenShots.image}>
+                    </div>
+                `
+                window.scrollTo({top: 0})
+            })
+        })
+        popupCards.addEventListener('click', () => {
+            popupCards.classList.remove('cards') 
+            popupCards.innerHTML  = ""
+            smallImages.classList.remove('smallImagesActive')
+            smallImages.innerHTML = ""
+        })
+
     })
 }
+
+// submit.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     const getAPI = async () => {
+//         let value = input.value;
+//         const url2 = `https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba&search=${value}`
+//         if(value === "") {
+//             alert("Please Enter A Game. The default games will now be loaded")
+//         }
+//         try {
+//         const api = await fetch(url2)
+//         const data = await api.json()
+//         window.scrollTo({bottom: 0})
+//         // console.log(data)
+//         input.value = ""
+//         scroll.style.display = 'block'
+//             gameSearch(data)
+//         } catch(error) {
+//             console.log(`Failed to fetch data ${error}`)
+//         }
+//     }
+//     getAPI()
+// })
+
+// const gameSearch = (data) => {
+//     data.results.forEach((search) => {
+//         // console.log(search)
+//         searchCards.innerHTML += `
+//         <div class="search-info">
+//             <h1 class="search-name">${search.name}</h1>
+//             <h3 class="search-date">Released: ${search.released}</h3>
+//             <img class="search-image" src=${search.background_image}>
+//         </div>
+//         `
+//         const searchInfo = document.querySelector('.search-info')
+//         searchInfo.addEventListener('click', (e) => {
+//             console.log(e.searchInfo)
+//         })       
+//     })
+// }
+
+
 
 //Creating dates to fetch games
 const fetchCurrentMonth = () => {
