@@ -54,19 +54,20 @@ const gameSearch = (data) => {
             <h1 class="search-name">${search.name}</h1>
             <h3 class="rating">Rating: ${search.rating}</h3>
             `
-
+            search.genres.map((genre) => {
+                console.log(genre.name)
+                popupCards.innerHTML += `
+                    <div class="genres">
+                        <h3>Type:  ${genre.name}</h3>
+                    </div>
+                `
+            })
             // console.log(gameData)
             search.platforms.map((gameData) => {
                 console.log(gameData.platform.name)
                 popupCards.innerHTML += `
-                    <h3>${gameData.platform.name}</h3>
+                    <h3 class="platforms">${gameData.platform.name}</h3>
                 `  
-                if(gameData.platform.name === "PC") {
-                    console.log('Its a PC')
-                    cardsClicked.innerHTML += `
-                        <img src="./images/gamepad.svg">
-                    `
-                } 
             })
             popupCards.innerHTML += `
             <h1 class="close-button">X</h1>
@@ -74,7 +75,6 @@ const gameSearch = (data) => {
             `
             search.short_screenshots.map((screenShots) => {
                 smallImages.classList.add('smallImagesActive')
-                // console.log(screenShots.image)
                 smallImages.innerHTML += `
                     <div class="screen-shots">
                         <img src=${screenShots.image}>
