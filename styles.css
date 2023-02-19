@@ -243,8 +243,22 @@ html {
   cursor: pointer;
 }
 
+@media(max-width: 330px) {
+  .search-section, .gaming-header {
+    display: flex;
+    width: 100%;
+    margin-left: 8px;
+  }
+}
 
 @media (max-width: 420px) {
+  .search-section {
+    /* position: absolute;
+    top: 35%;
+    left: 55%;
+    transform: translate(-55%, -35%);
+    width: 100%; */
+  }
   .submit {
     margin-top: 5px;
   }
@@ -277,6 +291,10 @@ html {
     top: 35%;
     left: 50%;
     transform: translate(-50%, -35%);
+  }
+  .search-cards {
+    position: absolute;
+    top: 40%;
   }
   .gaming-header {
     position: absolute;
