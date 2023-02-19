@@ -95,15 +95,6 @@ html {
   display: none;
 }
 
-/* .down-arrow {
-    font-size: 4rem;
-    animation: scroll-arrow 1s infinite;
-} */
-
-/* .searched-cards {
-    background: rgba(0,0,0,0.5);
-} */
-
 .search-cards {
   display: flex;
   justify-content: space-evenly;
@@ -155,6 +146,7 @@ html {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  z-index: 10;
 }
 .cards {
   background: #000;
