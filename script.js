@@ -6,7 +6,6 @@ const scroll = document.querySelector('.scroll')
 const cardsClicked = document.querySelector('.cards-clicked')
 const smallImages = document.querySelector('.small-images')
 const popupCards = document.querySelector('.popup-cards')
-// const thumbNails = document.querySelector('.popup-cards>.small-images')
 
 
 const url = "https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba"
@@ -23,10 +22,7 @@ submit.addEventListener('click', (e) => {
         try {
         const api = await fetch(url2)
         const data = await api.json()
-        // window.scrollTo({bottom: 0})
-        // console.log(data)
         input.value = ""
-        // scroll.style.display = 'block'
             gameSearch(data)
         } catch(error) {
             console.log(`Failed to fetch data ${error}`)
@@ -37,7 +33,7 @@ submit.addEventListener('click', (e) => {
 
 const gameSearch = (data) => {
     data.results.forEach((search) => {
-        console.log(search)
+        // console.log(search)
         const gameData = document.createElement('div')
         searchCards.append(gameData)
         gameData.innerHTML += `
@@ -64,7 +60,7 @@ const gameSearch = (data) => {
             })
             // console.log(gameData)
             search.platforms.map((gameData) => {
-                console.log(gameData.platform.name)
+                // console.log(gameData.platform.name)
                 popupCards.innerHTML += `
                     <h3 class="platforms">${gameData.platform.name}</h3>
                 `  
@@ -93,138 +89,40 @@ const gameSearch = (data) => {
     })
 }
 
-// submit.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     const getAPI = async () => {
-//         let value = input.value;
-//         const url2 = `https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba&search=${value}`
-//         if(value === "") {
-//             alert("Please Enter A Game. The default games will now be loaded")
-//         }
-//         try {
-//         const api = await fetch(url2)
-//         const data = await api.json()
-//         window.scrollTo({bottom: 0})
-//         // console.log(data)
-//         input.value = ""
-//         scroll.style.display = 'block'
-//             gameSearch(data)
-//         } catch(error) {
-//             console.log(`Failed to fetch data ${error}`)
-//         }
-//     }
-//     getAPI()
-// })
-
-// const gameSearch = (data) => {
-//     data.results.forEach((search) => {
-//         // console.log(search)
-//         searchCards.innerHTML += `
-//         <div class="search-info">
-//             <h1 class="search-name">${search.name}</h1>
-//             <h3 class="search-date">Released: ${search.released}</h3>
-//             <img class="search-image" src=${search.background_image}>
-//         </div>
-//         `
-//         const searchInfo = document.querySelector('.search-info')
-//         searchInfo.addEventListener('click', (e) => {
-//             console.log(e.searchInfo)
-//         })       
-//     })
-// }
-
-
 
 //Creating dates to fetch games
-const fetchCurrentMonth = () => {
-    const month = new Date().getMonth() + 1
-    if(month < 10) {
-        return `0{month}`
-    } else {
-        return month
-    }
-}
-fetchCurrentMonth()
-
-const fetchCurrentDay = () => {
-    const day = new Date().getDate()
-    if(day < 10) {
-        return `0${day}`
-    } else {
-        return day
-    }
-}
-fetchCurrentDay()
-
-const fetchCurrentYear = () => {
-    const year = new Date().getFullYear()
-}
-fetchCurrentYear()
-
-const currentYear = new Date().getFullYear()
-const currentMonth = fetchCurrentMonth()
-const currentDay = fetchCurrentDay()
-const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
-const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`
-const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`
-
-
-//Fetching highest rated games
-//     const getApi = async () => {
-//         const url = `https://rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba&dates=${lastYear},${currentDate}&ordering=-rating`
-//         try {
-//         const api = await fetch(url)
-//         const data = await api.json()
-//         highestRatedGames(data)
-//         console.log(data)
-//         input.value = ""
-//         } catch(error) {
-//             console.log(`Failed to fetch data ${error}`)
-//         }
+// const fetchCurrentMonth = () => {
+//     const month = new Date().getMonth() + 1
+//     if(month < 10) {
+//         return `0{month}`
+//     } else {
+//         return month
 //     }
-//     getApi()
-
-
-// const highestRatedGames = (data) => {
-//     data.results.forEach((info) => {
-//         // console.log(info)
-//         highestRated.innerHTML += `
-//         <div class="popular-games">
-//             <img class="gaming-image" src=${info.background_image}>
-//             <h3>${info.name}</h3>
-//         </div>
-//         `
-//     })
 // }
+// fetchCurrentMonth()
 
-
-//Fetching games coming soon
-//     const getApi2 = async () => {
-//         const url = `https://rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba&dates=${currentDate},${nextYear}&ordering=-rating`
-//         try {
-//         const api = await fetch(url)
-//         const data = await api.json()
-//         comingSoon(data)
-//         console.log(data)
-//         input.value = ""
-//         } catch(error) {
-//             console.log(`Failed to fetch data ${error}`)
-//         }
+// const fetchCurrentDay = () => {
+//     const day = new Date().getDate()
+//     if(day < 10) {
+//         return `0${day}`
+//     } else {
+//         return day
 //     }
-//     getApi2()
-
-
-// const comingSoon = (data) => {
-//     data.results.forEach((info) => {
-//         // console.log(info)
-//         highestRated.innerHTML += `
-//         <div class="popular-games">
-//             <img class="gaming-image" src=${info.background_image}>
-//             <h3>${info.name}</h3>
-//         </div>
-//         `
-//     })
 // }
+// fetchCurrentDay()
+
+// const fetchCurrentYear = () => {
+//     const year = new Date().getFullYear()
+// }
+// fetchCurrentYear()
+
+// const currentYear = new Date().getFullYear()
+// const currentMonth = fetchCurrentMonth()
+// const currentDay = fetchCurrentDay()
+// const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+// const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`
+// const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`
+
 
 
 //NASA API KEY: bgVXNGhNo3viRxKKc3SdD9LhDvPmJgYObDmZT7gQ
