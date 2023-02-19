@@ -294,8 +294,7 @@ html {
     transform: translate(-50%, -35%);
   }
   .search-cards {
-    position: absolute;
-    top: 40%;
+    margin-top: 80%;
   }
   .gaming-header {
     position: absolute;
