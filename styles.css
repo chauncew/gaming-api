@@ -253,13 +253,6 @@ html {
 }
 
 @media (max-width: 420px) {
-  .search-section {
-    /* position: absolute;
-    top: 35%;
-    left: 55%;
-    transform: translate(-55%, -35%);
-    width: 100%; */
-  }
   .submit {
     margin-top: 5px;
   }
@@ -270,6 +263,9 @@ html {
   }
   .input-box::placeholder {
     color: #fff;
+  }
+  .search-cards {
+    margin-top: 120%;
   }
 }
 
@@ -284,6 +280,9 @@ html {
     width: 100%;
     text-align: center;
   }
+  .searched-cards {
+    margin-top: 60%;
+  }
 }
 
 @media(max-width: 1300px) {
@@ -294,7 +293,7 @@ html {
     transform: translate(-50%, -35%);
   }
   .search-cards {
-    margin-top: 80%;
+    margin-top: 35%;
   }
   .gaming-header {
     position: absolute;
