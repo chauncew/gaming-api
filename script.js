@@ -1,4 +1,4 @@
-const highestRated = document.querySelector('.highest-rated');
+const highestRated = document.querySelector('.highest-rated')
 const input = document.querySelector('.input-box')
 const submit = document.querySelector('.submit')
 const searchCards = document.querySelector('.search-cards')
@@ -6,6 +6,7 @@ const scroll = document.querySelector('.scroll')
 const cardsClicked = document.querySelector('.cards-clicked')
 const smallImages = document.querySelector('.small-images')
 const popupCards = document.querySelector('.popup-cards')
+const vale = document.querySelector('.vale')
 
 
 const url = "https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba"
@@ -45,6 +46,7 @@ const gameSearch = (data) => {
         </div>
         `
         gameData.addEventListener('click', () => {
+            vale.style.display = 'block'
             popupCards.classList.add('cards')
             popupCards.innerHTML += `
             <h1 class="search-name">${search.name}</h1>
@@ -84,6 +86,7 @@ const gameSearch = (data) => {
             popupCards.innerHTML  = ""
             smallImages.classList.remove('smallImagesActive')
             smallImages.innerHTML = ""
+            vale.style.display = "none"
         })
 
     })

@@ -5,8 +5,25 @@
   font-family: sans-serif;
 }
 
+body {
+  position: relative;
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+.vale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 110%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+  overflow-x: hidden;
+  display: none;
 }
 
 /* Header Section Styles */
@@ -182,9 +199,15 @@ html {
   padding-right: 10%;
 }
 
-.platforms::before {
-  content: "Platform:  ";
-  letter-spacing: 1.3px;
+.platform-name {
+  position: absolute;
+  top: 8%;
+  right: 11%;
+  font-size: 1.5rem;
+}
+
+.platform-name {
+  letter-spacing: 1.1px;
 }
 
 .platform-image {
@@ -227,7 +250,7 @@ html {
 }
 
 .rating {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .genres {
@@ -267,6 +290,9 @@ html {
   .search-cards {
     padding-top: 40%;
   }
+  .platform-name {
+    display: none;
+  }
 }
 
 @media(max-width: 665px) {
@@ -278,10 +304,19 @@ html {
   }
   .platforms {
     width: 100%;
-    text-align: center;
+    text-align: right;
+  }
+  .platform-name {
+    top: 16%;
   }
   .searched-cards {
     margin-top: 60%;
+  }
+}
+
+@media(max-width: 900px) {
+  .platform-name {
+    top: 14%;
   }
 }
 
