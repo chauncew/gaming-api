@@ -61,6 +61,7 @@ body {
 .search-section {
   text-align: center;
   position: relative;
+  overflow-x: hidden;
 }
 
 .search-img {
