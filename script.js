@@ -3,10 +3,10 @@ const input = document.querySelector('.input-box')
 const submit = document.querySelector('.submit')
 const searchCards = document.querySelector('.search-cards')
 const scroll = document.querySelector('.scroll')
-const cardsClicked = document.querySelector('.cards-clicked')
 const smallImages = document.querySelector('.small-images')
 const popupCards = document.querySelector('.popup-cards')
 const vale = document.querySelector('.vale')
+const body = document.querySelector('body')
 
 
 const url = "https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba"
@@ -30,11 +30,13 @@ submit.addEventListener('click', (e) => {
         }
     }
     getAPI()
+    searchCards.innerHTML = ""
+    // searchCards.style.display = "none"
 })
 
 const gameSearch = (data) => {
     data.results.forEach((search) => {
-        // console.log(search)
+        console.log(search)
         const gameData = document.createElement('div')
         searchCards.append(gameData)
         gameData.innerHTML += `
@@ -47,6 +49,7 @@ const gameSearch = (data) => {
         `
         gameData.addEventListener('click', () => {
             vale.style.display = 'block'
+            vale.style.transition = "all 0.5s"
             popupCards.classList.add('cards')
             popupCards.innerHTML += `
             <h1 class="search-name">${search.name}</h1>
@@ -129,3 +132,8 @@ const gameSearch = (data) => {
 
 
 //NASA API KEY: bgVXNGhNo3viRxKKc3SdD9LhDvPmJgYObDmZT7gQ
+
+const info = {
+    fname: "Chaunce",
+    lname: "Wright"
+    }

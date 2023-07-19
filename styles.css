@@ -5,13 +5,14 @@
   font-family: sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   position: relative;
   height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
+  /* background: url('./images/second-background.jpg')center center/cover no-repeat; */
 }
 
 .vale {
@@ -24,6 +25,7 @@ html {
   z-index: 1;
   overflow-x: hidden;
   display: none;
+  /* transition: all 1s */
 }
 
 /* Header Section Styles */
@@ -112,6 +114,12 @@ html {
   display: none;
 }
 
+.searched-cards img{
+  object-fit: cover;
+  background-repeat: no-repeat;
+  
+}
+
 .search-cards {
   display: flex;
   justify-content: space-evenly;
@@ -148,20 +156,6 @@ html {
   margin-bottom: 10px;
 }
 
-.search-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.search-name {
-  margin: 10px 0;
-}
-
-.gameData {
-  overflow-x: hidden;
-}
-
 /* Card Clicked Section Styles */
 .popup-cards {
   position: relative;
@@ -179,13 +173,6 @@ html {
   border-radius: 5px 5px 0 0;
   margin-top: 50px;
   overflow: hidden;
-}
-
-.cards-clicked {
-  position: relative;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
 }
 
 .search-name {
@@ -214,8 +201,6 @@ html {
   align-self: flex-end;
   margin-bottom: 10px;
   padding-right: 10%;
-  /* height: 50px;
-    width: 50px; */
 }
 
 /* Small Images Section Styles */
@@ -269,6 +254,7 @@ html {
 
 @media(max-width: 330px) {
   .search-section, .gaming-header {
+    display: none;
     display: flex;
     width: 100%;
     margin-left: 8px;
@@ -287,9 +273,6 @@ html {
   .input-box::placeholder {
     color: #fff;
   }
-  .search-cards {
-    padding-top: 40%;
-  }
   .platform-name {
     display: none;
   }
@@ -301,6 +284,7 @@ html {
   }
   .search-img {
     object-position: right 0%;
+    margin-top: 50px;
   }
   .platforms {
     width: 100%;
@@ -309,8 +293,11 @@ html {
   .platform-name {
     top: 16%;
   }
-  .searched-cards {
-    margin-top: 60%;
+}
+
+@media(max-width: 690px) {
+  .popup-cards {
+    padding-top: 80px;
   }
 }
 
@@ -321,25 +308,20 @@ html {
 }
 
 @media(max-width: 1300px) {
-  .search-section {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -35%);
-  }
-  .search-cards {
-    margin-top: 35%;
-  }
-  .gaming-header {
-    position: absolute;
-    top: 15%;
-  }
   .popup-cards {
     width: 80%;
   }
 }
 
 @media(max-width: 1700px) {
+  .input-box,
+  .submit {
+    background: rgba(0, 75, 200, 0.75);
+    color: #fff;
+  }
+  .input-box::placeholder {
+    color: #fff;
+  }
   .search-img {
     object-position: center;
   }
