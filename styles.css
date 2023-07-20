@@ -7,25 +7,24 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   position: relative;
   height: 100%;
-  /* background: url('./images/second-background.jpg')center center/cover no-repeat; */
 }
 
 .vale {
   position: absolute;
   top: 0;
   left: 0;
-  height: 110%;
-  width: 115%;
+  height: 105%;
+  width: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 1;
   overflow: hidden;
   display: none;
-  /* transition: all 1s */
 }
 
 /* Header Section Styles */
@@ -129,7 +128,8 @@ body {
   margin-bottom: 160px;
   padding: 0 15px;
   gap: 60px;
-  z-index: -5;
+  overflow-x: hidden;
+  /* z-index: -5; */
 }
 
 .search-info {
@@ -226,6 +226,7 @@ body {
   display: flex;
   flex-direction: row;
   z-index: 10;
+  overflow: hidden;
 }
 
 .screen-shots img {
