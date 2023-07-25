@@ -7,6 +7,9 @@ const smallImages = document.querySelector('.small-images')
 const popupCards = document.querySelector('.popup-cards')
 const vale = document.querySelector('.vale')
 const body = document.querySelector('body')
+const mainHeading = document.querySelectorAll('.main-heading h1')
+const searchInfo = document.querySelectorAll('.search-info')
+const searchSection = document.querySelector('.search-section')
 
 
 const url = "https://api.rawg.io/api/games?key=d34c595a3f0b48eca8d4022bde535aba"
@@ -36,8 +39,10 @@ submit.addEventListener('click', (e) => {
 
 const gameSearch = (data) => {
     data.results.forEach((search) => {
-        console.log(search)
+        // console.log(search)
         const gameData = document.createElement('div')
+        //gameData Load Animation
+        gsap.from(gameData, {y: -1000, x: -1000,  duration: 1.5, rotateY: 1080})
         searchCards.append(gameData)
         gameData.innerHTML += `
         <div class="search-info">
@@ -56,7 +61,7 @@ const gameSearch = (data) => {
             <h3 class="rating">Rating: ${search.rating}</h3>
             `
             search.genres.map((genre) => {
-                console.log(genre.name)
+                // console.log(genre.name)
                 popupCards.innerHTML += `
                     <div class="genres">
                         <h3>Type:  ${genre.name}</h3>
@@ -95,6 +100,41 @@ const gameSearch = (data) => {
     })
 }
 
+//Animations
+gsap.registerPlugin()
+//Heading Animation
+const animation = () => {
+    const reveal = gsap.timeline()
+    reveal
+      .from(mainHeading, {
+        autoAlpha: 0,
+        scale: 30,
+        y: -100,
+        ease: 'bounce.out',
+        duration: 1,
+        stagger: 0.9,
+      })
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+        animation()
+    }, 1000)
+  })
+
+  //Search Box Animations
+  const animation2 = () => {
+    gsap.from(searchSection, {autoAlpha: 0, y: 300, opacity: 0, duration: 1.5, delay: 4})
+  }
+  animation2()
+
+//Card Animation
+// const animation2 = gsap.timeline()
+// animation2
+// .fromTo(searchCards, {autoAlpha: 0, x: -2000, opacity: 0, scale: 7}, {x: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.3})
+
+
+
 
 //Creating dates to fetch games
 // const fetchCurrentMonth = () => {
@@ -132,8 +172,3 @@ const gameSearch = (data) => {
 
 
 //NASA API KEY: bgVXNGhNo3viRxKKc3SdD9LhDvPmJgYObDmZT7gQ
-
-const info = {
-    fname: "Chaunce",
-    lname: "Wright"
-    }
