@@ -47,7 +47,6 @@ body {
 }
 
 .main-heading {
-  /* text-align: center; */
   display: flex;
 }
 
@@ -139,7 +138,6 @@ body {
   padding: 0 15px;
   gap: 60px;
   overflow: hidden;
-  /* z-index: -5; */
 }
 
 .search-info {
@@ -155,7 +153,6 @@ body {
   border-radius: 5px;
   box-shadow: 6px 2px 11px 0px rgba(0, 0, 0, 0.9);
   overflow: hidden;
-  /* visibility: hidden; */
 }
 
 .search-info:hover {
@@ -265,6 +262,8 @@ body {
   cursor: pointer;
 }
 
+
+/* Media Queries */
 @media(max-width: 330px) {
   .search-section, .gaming-header {
     display: none;
